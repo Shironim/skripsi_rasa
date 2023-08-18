@@ -82,30 +82,13 @@ stories:
   - action: utter_greet
   - intent: search_product
   - action: utter_search_product
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - intent: tanya_kamera_spesifik
+    entities:
+    - merk_kamera: Sony
+  - slot_was_set:
+    - merk_kamera: Sony
+  - action: utter_remember
+  - intent: repeat_merk_kamera
+  - action: action_tanya_kamera_spesifik
+  - intent: goodbye
   - action: utter_goodbye

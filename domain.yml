@@ -1,38 +1,48 @@
 version: "3.1"
 
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - search_product
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_search_product:
-  - text: "apa yang kamu butuhkan ?"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+intents:
+  - search_product
+  - bot_challenge
+  - tanya_kamera_foto
+  - tanya_kamera_spesifik
+  - repeat_merk_kamera
+  - goodbye
+  - greet
+  
+entities:
+- merk_kamera
+
+slots:
+  merk_kamera:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: merk_kamera
+
+responses:
+  utter_search_product:
+  - text: "apa yang kamu butuhkan ?"
+  utter_tanya_kamera_spesifik:
+  - text: What is your shirt size?
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_remember:
+  - text: Thanks. I'll remember that.
+  utter_goodbye:
+  - text: bye.
+  utter_greet:
+  - text: nice to meet you.
+
+actions:
+- action_tanya_kamera_spesifik
+- utter_tanya_kamera_spesifik
+- utter_remember
+- utter_goodbye
+- utter_greet
+
+

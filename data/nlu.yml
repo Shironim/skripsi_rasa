@@ -105,12 +105,21 @@ nlu:
     - ada kamera apa saja ?
     - kamera
 
-
 - intent : tanya_kamera_foto
   examples: |
     - ada kamera apa saja ?
     - tersedia kamera apa ?
+    
+- intent : tanya_kamera_spesifik
+  examples : |
     - apakah ada kamera [Nikon](merk_kamera) ?
+    - apakah ada kamera [Sony](merk_kamera) ?
+
+- intent : repeat_merk_kamera
+  examples : |
+    - apa merk kamera tadi ?
+    - apa merk kamera ?
+    - merk kamera ?
 
 - lookup : merk_kamera
   examples: |
