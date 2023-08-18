@@ -1,6 +1,87 @@
 version: "3.1"
 
 stories:
+# story
+# story 1 : customer want to rent a camera
+# - greet
+# - ask camera availability
+# - ask price / day
+# - ask what package are included
+
+# NOTE*
+
+# Karena produk saling berkaitan, maka, story yang memungkinkan untuk terjadi adalah customer bertanya tentang kesediaan produk lain, harga produk lain, dan paket yang termasuk dalam produk lain
+
+# Ditengah percakapan, customer akan bertanya harga, kesediaan barang, apa saja yang didapatkan, tempat pengambilan, apakah bisa diantar ke rumah, apakah bisa diajari terlebih dahulu sebelum menggunakan ?
+
+# Akan ada pertanyaan teknis yang akan ditanyakan, seperti penggunaan kamera, lensa, lighting, dan lain-lain
+
+# informasi umum product knowledge, PR ada apa saja produk yang ditawarkan ? dibatasi saja pie ?
+# - Kamera
+#   Jenis
+#   - SLR
+#   - DSLR
+#   - Mirrorless
+#   - Pocket
+#   Merk
+#   - Canon
+#   - Nikon
+#   - Sony
+#   - Fujifilm
+#   - Panasonic
+#   - Olympus
+#   - Leica
+#   - Pentax
+# - Lensa
+# - Lighting
+# - Stand
+# - Tripod
+# - Lain lain
+#   - Kabel HDMI
+#   - Kabel VGA
+#   - Splitter
+#   - Converter VGA to HDMI
+#   - Converter HDMI to VGA
+
+# Alur 1, user meminta ke bot
+# User bisa bertanya tentang produk
+# User akan ditanya apakah jadi memilih produk ini 
+#   - jika iya maka akan dimasukan ke keranjang belanja 
+#   - jika tidak maka akan dijawab apa lagi yang diperlukan 
+#   -> back to step 1
+# [Jika Iya]
+# Bot akan menampilkan keranjang belanja saat ini & bertanya, apa ada lagi yang diperlukan ?
+# -> back to step 1
+
+# Alur 2, bot memberikan rekomendasi berdasarkan search & pertanyaan pengguna
+# User bertanya tentang produk
+# Bot akan memberikan rekomendasi produk
+# Bot akan bertanya kebutuhan customer menyewa produk
+# User memberikan kebutuhannya
+# Bot akan memberikan rekomendasi produk yang berelasi dengan produk pertama yang dicari
+# -> Masuk ke alur 1
+
+# Alur dibuat general saja
+# 1. Menanyakan produk
+#   - bisa dipecah jadi banyak per produk
+#     - harga & spesifikasi
+#       - Compatibility dgn produk lain
+#       - Jenis 
+#       - Merk
+#     - kesediaan
+#     - review produk
+# 2. Menanyakan kebutuhan & memberikan rekomendasi
+# 3. Memasukan ke keranjang belanja
+
+
+
+
+- story: Search product
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: search_product
+  - action: utter_search_product
 
 - story: happy path
   steps:

@@ -8,6 +8,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - search_product
 
 responses:
   utter_greet:
@@ -22,6 +23,9 @@ responses:
 
   utter_happy:
   - text: "Great, carry on!"
+
+  utter_search_product:
+  - text: "apa yang kamu butuhkan ?"
 
   utter_goodbye:
   - text: "Bye"

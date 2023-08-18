@@ -89,3 +89,31 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+# Intent adalah maksud dari percakapan
+# jika ingin bertanya produk, setiap produk bisa di artikan sebagai entitas (entity), kegiatannya dibuat dalam story / alur percakapan, mencari produk / mau sewa / bertanya untuk pembelian
+# tetapi setiap story itu memiliki jawaban sendiri, 1 story -> 1 response yang berkaitan dengan hal tersebut (mencari produk/ mau sewa / bertanya utk beli)
+# itu berarti setiap produk memiliki storynya masing masing atau dibuat seperti checkpoint dan diarahkan ke story yang sesuai dengan entitas produknya
+# response dari pertanyaan tiap produk akan dinamis
+# how build dinamic response in rasa ? https://forum.rasa.com/t/dynamic-response-selector-in-rasa-chatbot/51506/2
+ 
+- intent: search_product
+  examples: |
+    - aku sedang mencari kamera ?
+    - apakah tersedia kamera DSLR ?
+    - apakah ada kamera DSLR ?
+    - ada kamera apa saja ?
+    - kamera
+
+
+- intent : tanya_kamera_foto
+  examples: |
+    - ada kamera apa saja ?
+    - tersedia kamera apa ?
+    - apakah ada kamera [Nikon](merk_kamera) ?
+
+- lookup : merk_kamera
+  examples: |
+   - Sony
+   - Nikon
+
