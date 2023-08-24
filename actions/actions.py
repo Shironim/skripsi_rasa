@@ -13,32 +13,41 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-
-class ActionHelloWorld(Action):
+class ActionTanyaProduk(Action):
 
     def name(self) -> Text:
-        return "action_hello_world"
+        return "action_tanya_produk"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hello World!")
-
+        produk = tracker.get_slot("produk")
+        merk = tracker.get_slot("merk")
+        if not produk and not merk:
+            dispatcher.utter_message(text="Saya tidak tahu produk yang kamu cari")
+        else:
+            dispatcher.utter_message(text=f"produk yang kamu cari {produk}!")
+            dispatcher.utter_message(text=f"merk yang kamu cari {merk}!")
         return []
 
-class ActionSayMerkKamera(Action):
+class ActionRespPengembalianAlat(Action):
 
     def name(self) -> Text:
-        return "action_tanya_kamera_spesifik"
+        return "action_resp_pengembalian_alat"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        merk_kamera = tracker.get_slot("merk_kamera")
-        if not merk_kamera:
-            dispatcher.utter_message(text="Saya tidak tahu merk kamera yang kamu cari")
+        pengembalian = tracker.get_slot("pengembalian")
+        terlambat = tracker.get_slot("terlambat")
+        if pengembalian:
+            dispatcher.utter_message(text=f"entitas pengembalian :  {pengembalian}!")
+            dispatcher.utter_message(template="utter_pengembalian_alat")
+        elif terlambat:
+            dispatcher.utter_message(text=f"entitas terlambat {terlambat}!")
+            dispatcher.utter_message(template="utter_pengembalian_alat")
         else:
-            dispatcher.utter_message(text=f"kamera yang kamu cari {merk_kamera}!")
+            dispatcher.utter_message(template="utter_pengembalian_alat")
         return []

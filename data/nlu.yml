@@ -1,128 +1,105 @@
 version: "3.1"
 
 nlu:
-- intent: greet
+- intent : sapaan_pembuka
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - Halo
+    - Hi
+    - Permisi
+    - Selamat pagi
+    - Selamat siang
+    - Selamat Sore
+    - Selamat malam
 
-- intent: goodbye
+- intent : tanya_produk
+  # produk yang akan dimasukan
+  # - kamera (kamera foto, video, DSLR, mirrorless)
+  # - lensa
+  # - lighting
+  # - stand tripod
+  # - monitor
+  # - lain lain (converter, kabel, splitter, video capture)
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - Selamat siang, saya ingin menyewa [kamera](produk)
+    - Selamat siang, saya ingin menyewa [kamera video](produk)
+    - Permisi, ada [kamera](produk) apa saja yang tersedia ?
+    - Permisi, ada [kamera foto](produk) apa saja yang tersedia ?
+    - Permisi, ada [kamera shooting](produk) apa saja yang tersedia ?
+    - Permisi, ada [kamera video](produk) apa saja yang tersedia ?
+    - Siang kak, saya lagi mencari [kamera](produk)
+    - Siang kak, saya lagi mencari [lensa](produk)
+    - Siang kak, saya lagi mencari [handycam](produk)
+    - Siang kak, saya lagi mencari [kamera video](produk)
+    - halo, saya butuh [kamera](produk)
+    - Hi, saya butuh [kamera](produk)
+    - saya butuh [handycam](produk)
+    - apakah ada [kamera foto](produk) ?
+    - apakah ada [kamera video](produk) ?
+    - apakah [kamera](produk) [Nikon](merk) ada ?
+    - apakah [kamera](produk) [Sony](merk) ada ?
+    - [kamera](produk) merk [Nikon](merk) ada ?
+    - kalau [kamera](kamera_foto) merk [Nikon](merk) ada ?
+    - ada [handycam](produk) merk [Nikon](merk) ?
+    - ada kamera apa saja yang tersedia ?
+    - merk [kamera](produk) apa ?
+    - merk [kamera] (produk) ?
+    - disini ada merk [kamera](produk) apa saja ?
+    - disini ada [handycam](produk) apa saja ?
+    - ada merk [kamera](produk) apa saja ?
+    - apakah ada [kamera](produk) [Nikon](merk) ?
+    - apakah ada [kamera](produk) [Sony](merk) ?
+    - [kamera](produk) merk [Nikon](merk) ada gak ?
+    - kalau [kamera](kamera_foto) ada merk apa saja ?
+    - kalau [handycam](produk) ada gak ya ?
+    - kalau [kamera video](produk) ada gak ya ?
+    - ada [handycam](produk) juga ?
+    - [handycam](produk) ada ?
+    - kalau [lensa](produk) ada merk apa saja ?
+    - disini ada [lensa](produk) merk [Nikon](merk) ?
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-
-# Intent adalah maksud dari percakapan
-# jika ingin bertanya produk, setiap produk bisa di artikan sebagai entitas (entity), kegiatannya dibuat dalam story / alur percakapan, mencari produk / mau sewa / bertanya untuk pembelian
-# tetapi setiap story itu memiliki jawaban sendiri, 1 story -> 1 response yang berkaitan dengan hal tersebut (mencari produk/ mau sewa / bertanya utk beli)
-# itu berarti setiap produk memiliki storynya masing masing atau dibuat seperti checkpoint dan diarahkan ke story yang sesuai dengan entitas produknya
-# response dari pertanyaan tiap produk akan dinamis
-# how build dinamic response in rasa ? https://forum.rasa.com/t/dynamic-response-selector-in-rasa-chatbot/51506/2
- 
-- intent: search_product
-  examples: |
-    - aku sedang mencari kamera ?
-    - apakah tersedia kamera DSLR ?
-    - apakah ada kamera DSLR ?
-    - ada kamera apa saja ?
-    - kamera
-
-- intent : tanya_kamera_foto
-  examples: |
-    - ada kamera apa saja ?
-    - tersedia kamera apa ?
-    
-- intent : tanya_kamera_spesifik
+- intent : syarat_sewa
   examples : |
-    - apakah ada kamera [Nikon](merk_kamera) ?
-    - apakah ada kamera [Sony](merk_kamera) ?
+    - bagaimana syarat menyewa kamera
+    - apa saja syarat menyewa kamera
+    - syarat sewa
+    - apa ada ketentuan sewa ?
+    - apa perlu memberikan ktp sebagai syarat sewa nya ?
+    - bagaimana teknis sewa nya ?
+    - apakah ada yang perlu saya tinggal ?
 
-- intent : repeat_merk_kamera
+- intent : pengembalian_alat
   examples : |
-    - apa merk kamera tadi ?
-    - apa merk kamera ?
-    - merk kamera ?
+    - [pengembaliannya](pengembalian) nanti bagaimana ya ?
+    - apakah ada [denda keterlambatan](terlambat) ?
+    - maksimal [dikembalikan](pengembalian) kapan ya ?
+    - kapan maksimal [dikembalikan](pengembalian) barang nya ?
+    - kapan maksimal [mengembalikan](pengembalian) alat nya ?
+    - kalau [terlambat](terlambat) mengembalikan bagaimana ?
+    - kalau [telat](terlambat) ada denda berapa ?
+    - saya pinjam pagi hari, kalau [pengembaliannya](pengembalian) malam hari apakah boleh ?
+    - saya mengambil di malam hari, kalau [pengembaliannya](pengembalian) pagi hari besoknya apakah bisa ?
+    - saya mengambil di sore hari, kalau [pengembaliannya](pengembalian) pagi hari besoknya apakah bisa ?
 
-- lookup : merk_kamera
+- intent : pembayaran
+  examples : |
+    - untuk pembayarannya nanti bagaimana ya ?
+    - pembayarannya apakah bisa [transfer](metode_pembayaran) atau [cash](metode_pembayaran) ?
+    - Pembayarannya saya [transfer](metode_pembayaran) saja apakah bisa ?
+    - Pembayarannya kalau [cash](metode_pembayaran) saja apakah bisa ?
+    - metode pembayarannya yang bisa digunakan apa saja ?
+    - apakah perlu [DP](metode_pembayaran) dulu ?
+    - untuk sewa kameranya harus [DP](metode_pembayaran) dulu berapa ?
+
+- lookup : produk
   examples: |
-   - Sony
+   - Kamera
+   - Kamera Video
+   - Kamera Shooting
+   - Kamera Foto
+   - Handycam
+   - Kabel
+
+- lookup : merk
+  examples: |
    - Nikon
-
+   - Sony

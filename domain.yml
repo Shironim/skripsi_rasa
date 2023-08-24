@@ -5,44 +5,90 @@ session_config:
   carry_over_slots_to_new_session: true
 
 intents:
-  - search_product
-  - bot_challenge
-  - tanya_kamera_foto
-  - tanya_kamera_spesifik
-  - repeat_merk_kamera
-  - goodbye
-  - greet
+  - sapaan_pembuka
+  - tanya_produk
+  - syarat_sewa
+  - pengembalian_alat
+  - pembayaran
   
 entities:
-- merk_kamera
+  - merk
+  - produk
+  - terlambat
+  - pengembalian
+  - metode_pembayaran
 
 slots:
-  merk_kamera:
+  merk:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
-      entity: merk_kamera
+      entity: merk
+  produk:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: produk
+  terlambat:
+    type: bool
+    influence_conversation: False
+    mappings:
+    - type: custom
+  pengembalian:
+    type: bool
+    influence_conversation: False
+    mappings:
+    - type: custom
+  metode_pembayaran:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: metode_pembayaran
 
 responses:
-  utter_search_product:
-  - text: "apa yang kamu butuhkan ?"
-  utter_tanya_kamera_spesifik:
-  - text: What is your shirt size?
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-  utter_remember:
-  - text: Thanks. I'll remember that.
-  utter_goodbye:
-  - text: bye.
-  utter_greet:
-  - text: nice to meet you.
+  utter_sapaan_pembuka:
+  - text: Selamat datang, ada yang bisa kami bantu ?.
+  - text: Selamat datang, boleh dijelaskan apa kebutuhannya ?.
+  - text: Selamat datang di toko kami, sedang mencari apa ?.
+ 
+  utter_syarat_sewa:
+  - text: Untuk syarat sewa nya cukup perlu meninggalkan sementara KTP yaa.
+  - text: Persyaratan untuk dapat membawa alat, kami perlu KTP sebagai jaminan ya.
+  - text: Kamu perlu meninggalkan KTP sebagai jaminan alat yaa. Terimakasih.
+ 
+  utter_pembayaran:
+  - text: Pembayaran dilakukan saat pengambilan alat.
+  - condition:
+    - type: slot
+      name: metode_pembayaran
+      value: DP
+    text: Pembayaran DP perlu dilakukan minimal 50% saat pengambilan alat ya.
+
+  utter_pengembalian_alat:
+  - condition:
+    - type: slot
+      name: pengembalian
+      value: true
+    text: Mohon untuk tidak terlambat, alat yang disewa dikembalikan sesuai waktu pengambilan!.
+
+  - condition:
+    - type: slot
+      name: terlambat
+      value: true
+    text: Kami memiliki denda keterlambatan sebesar 50 ribu per 1 hari terlambar.
+  - text: Maksimal pengembalian alat sesuai dengan kesepakatan pengembalian alat sesuai dengan jam pengambilan!.
+  
 
 actions:
-- action_tanya_kamera_spesifik
-- utter_tanya_kamera_spesifik
-- utter_remember
-- utter_goodbye
-- utter_greet
+- action_tanya_produk
+- action_resp_pengembalian_alat
+- utter_sapaan_pembuka
+- utter_syarat_sewa
+- utter_pengembalian_alat
+- utter_pembayaran
+
 
 
