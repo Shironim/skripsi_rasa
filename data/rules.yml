@@ -1,3 +1,83 @@
 version: "3.1"
 
 rules:
+- rule: User menyapa
+  steps:
+    - intent: sapaan_pembuka
+    - action: action_sapaan
+
+- rule: User bertanya bagaimana cara pembayaran yang tersedia
+  steps:
+    - intent: pembayaran
+    - action: utter_pembayaran
+
+- rule: User bertanya bagaimana mekanisme pengambilan dan ketentuan lainnya
+  steps:
+    - intent: pengembalian_alat
+    - action: utter_pengembalian_alat
+
+- rule: User bertanya apa saja syarat sewa
+  steps:
+    - intent: syarat_sewa
+    - action: utter_syarat_sewa
+
+- rule: Bot tidak mengerti
+  steps:
+    - intent: nlu_fallback
+    - action: utter_please_rephrase
+
+- rule: Testing aja
+  steps:
+    - intent: testing_saja
+    - action: utter_testing_saja
+
+- rule: User search product random
+  condition:
+    - active_loop: null
+  steps:
+    - intent: tanya_produk
+    - action: search_product_form
+    - active_loop: search_product_form
+
+- rule: User filling to rent product
+  condition:
+  - active_loop: rent_product_form
+  - slot_was_set:
+    - want_to_rent_another_product: False
+  steps:
+  - action: rent_product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_rent_product
+  - action: action_send_email_invoice
+
+- rule: Submit search product form 
+  condition:
+  - active_loop: search_product_form
+  steps:
+  - action: search_product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_search_product
+  - action: action_fetch_search_product
+  - slot_was_set:
+    - product_fetch_avaliable: True
+  - action: utter_product_available
+  - action: utter_menawarkan_untuk_disewa
+
+- rule: Search product tapi tidak ada 
+  condition:
+  - active_loop: search_product_form
+  steps:
+  - action: search_product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_search_product
+  - action: action_fetch_search_product
+  - slot_was_set:
+    - product_fetch_avaliable: False
+  - action: utter_bertanya_kebutuhan_lainnya
+

@@ -2,7 +2,7 @@ version: "3.1"
 
 stories:
 
-- story: User mencari produk secara random dan menyewa 1 produk
+- story: User mencari produk secara random + menawarkan untuk menyewa
   steps:
   - intent: tanya_produk
   - action: search_product_form
@@ -14,16 +14,33 @@ stories:
     - product_fetch_avaliable: True
   - action: utter_product_available
   - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
+  - checkpoint: search_random_product_and_offer_to_rent
+
+- story: User mau menyewa
+  steps: 
+  - checkpoint: search_random_product_and_offer_to_rent
   - intent: konfirmasi_sewa
   - action: action_confirm_to_rent
   - slot_was_set:
-    - id_product_cart: [11]
     - confirm_to_rent: True
   - action: utter_bertanya_kebutuhan_lainnya
+  - checkpoint: user_want_to_rent_product_and_offer_another_product
+
+- story: User tidak mau menyewa
+  steps: 
+  - checkpoint: search_random_product_and_offer_to_rent
+  - intent: deny
+  - action: action_confirm_to_rent
   - slot_was_set:
-    - product_fetch_avaliable: False
+    - confirm_to_rent: False
+  - action: utter_bertanya_kebutuhan_lainnya
+  - intent: tanya_produk
+  - action: search_product_form
+  - active_loop: search_product_form
+
+- story: User tidak mau menyewa produk lainnya
+  steps:
+  - checkpoint: user_want_to_rent_product_and_offer_another_product
   - intent: deny
   - action: action_confirm_search_another_product
   - slot_was_set:
@@ -36,61 +53,9 @@ stories:
   - action: utter_submit_rent_product
   - action: action_send_email_invoice
 
-- story: User mencari produk secara random dan produk tidak ditemukan
+- story: User mau menyewa produk lainnya
   steps:
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: False
-  - action: utter_bertanya_kebutuhan_lainnya
-
-- story: User mencari produk secara random dan tidak jadi menyewa
-  steps:
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: deny
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: null
-    - confirm_to_rent: False
-  - action: action_selesai_percakapan
-
-- story: User mencari produk secara random dan mencari lagi ke 2 kali, tapi gak jadi menyewa alat ke 2
-  steps:
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True # -> ada produk yang tersedia # gimana jika produk tidak tersedia ?
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: konfirmasi_sewa
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: [11]
-    - confirm_to_rent: True
-  - action: utter_bertanya_kebutuhan_lainnya # perlu ada set confirm_to_rent: False
-  - slot_was_set:
-    - product_fetch_avaliable: False
+  - checkpoint: user_want_to_rent_product_and_offer_another_product
   - intent: konfirmasi_sewa
   - action: action_confirm_search_another_product
   - slot_was_set:
@@ -99,32 +64,7 @@ stories:
   - intent: tanya_produk
   - action: search_product_form
   - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: deny
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: [11]
-    - confirm_to_rent: False
-  - action: rent_product_form
-  - active_loop: rent_product_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit_rent_product
-  - action: action_send_email_invoice
 
-# TODO 
-# - sending email invoice to user
-# - reset all slot when, 1. utter_selesai_percakapan and 2. action_send_email_invoice
-# - add database Merk, Series
 
     # add story, ask of user want to rent another product
     # setelah konfirmasi sewa -> masukan ke product_cart, terus tanya, mau sewa lainnya lagi?
@@ -239,65 +179,3 @@ stories:
   # saya bayar dp diawal atau setelah ambil kameranya ?
   # apakah perlu bayar dp dulu ?
   # apakah ada syarat dan ketentuan untuk menyewa kamera ?
-
-- story: interactive_story_1
-  steps:
-  - intent: sapaan_pembuka
-  - action: action_sapaan
-  - intent: tanya_produk
-    entities:
-    - category: kamera
-    - merk: nikon
-    - series: d500
-    - category: kamera
-    - series: d500
-    - merk: nikon
-  - slot_was_set:
-    - merk: nikon
-  - slot_was_set:
-    - category: kamera
-  - slot_was_set:
-    - series: d500
-  - action: search_product_form
-  - active_loop: search_product_form
-  - slot_was_set:
-    - merk: nikon
-  - slot_was_set:
-    - category: kamera
-  - slot_was_set:
-    - series: d500
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: true
-  - slot_was_set:
-    - product_fetch:
-      - id_produk: 11
-        nama: Camera Nikon D500
-        merk: Nikon
-        harga: '350'
-        thumbnail: kamera_nikon_d500.jpeg
-        deskripsi: Memenuhi unggulan DX baru, yang D500 Nikon. Sekilas, kelihatannya tidak mengejutkan - tapi terkandung di dalam bodi kamera yang ramping adalah kekuatan besar yang sesungguhnya dari pemrosesan dan kemajuan teknologi. D500 siap untuk pergi ke mana pun gairah Anda menuntun Anda, menangkap segala sesuatu dengan kejelasan, kecepatan dan resolusi yang menakjubkan
-        type_produk: kamera
-        spesifikasi_detail: '{"dimensi": "147 x 115 x 81 mm","weight": "760 gr", "iso": "100 - 6400", "shutter": "30 - 1/8000 seconds", "file_format": "JPEG", "memory_card_type": "SD, SDHC, SDXC"}'
-        status: tersedia
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - intent: deny
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - confirm_to_rent: false
-  - slot_was_set:
-    - product_fetch: null
-  - slot_was_set:
-    - product_fetch_avaliable: false
-  - slot_was_set:
-    - category: null
-  - slot_was_set:
-    - merk: null
-  - slot_was_set:
-    - series: null
-  - action: action_selesai_percakapan
