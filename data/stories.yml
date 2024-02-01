@@ -24,7 +24,7 @@ stories:
   - action: utter_bertanya_kebutuhan_lainnya
   - slot_was_set:
     - product_fetch_avaliable: False
-  - intent: deny
+  - intent: menolak
   - action: action_confirm_search_another_product
   - slot_was_set:
     - want_to_rent_another_product: False
@@ -62,7 +62,7 @@ stories:
   - action: utter_menawarkan_untuk_disewa
   - slot_was_set:
     - product_fetch_avaliable: True
-  - intent: deny
+  - intent: menolak
   - action: action_confirm_to_rent
   - slot_was_set:
     - id_product_cart: null
@@ -108,7 +108,7 @@ stories:
   - action: utter_menawarkan_untuk_disewa
   - slot_was_set:
     - product_fetch_avaliable: True
-  - intent: deny
+  - intent: menolak
   - action: action_confirm_to_rent
   - slot_was_set:
     - id_product_cart: [11]
@@ -286,7 +286,7 @@ stories:
         status: tersedia
   - action: utter_product_available
   - action: utter_menawarkan_untuk_disewa
-  - intent: deny
+  - intent: menolak
   - action: action_confirm_to_rent
   - slot_was_set:
     - confirm_to_rent: false

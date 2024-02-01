@@ -87,7 +87,7 @@ nlu:
     - okee baik
     - iyaa baik
     - iyaa mau
-- intent: deny
+- intent: menolak
   examples: |
     - Enggak dulu
     - Tidak
@@ -101,7 +101,7 @@ nlu:
     - Saya sewa dari tanggal [9](number) sampai [21](number)
 - intent: inform_date
   examples: |
-    - dari tanggal [9](number) [februari](bulan)
+    - dari tanggal [9](number) 
     - dari tanggal [16](number)
     - [20](number)
     - [24](number)

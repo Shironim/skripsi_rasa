@@ -43,6 +43,7 @@ class ValidateSearchProductForm(FormValidationAction):
 
         return [
             "a6000",
+            "a6400",
             "d500",
             "d70",
             "d7100",
@@ -105,7 +106,7 @@ class ValidateSearchProductForm(FormValidationAction):
         if value.lower() in self.series_db():
             return {"series": value}
         else:
-            dispatcher.utter_message(text="utter_tanya_ulang")
+            dispatcher.utter_message(response="utter_tanya_ulang")
             # validation failed, set this slot to None, meaning the
             # user will be asked for the slot again
             return {"series": None}
