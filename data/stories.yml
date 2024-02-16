@@ -2,32 +2,28 @@ version: "3.1"
 
 stories:
 
-- story: User mencari produk secara random dan menyewa 1 produk
+- story: User mencari produk secara random dan memasukan kedalam keranjang belanja
   steps:
   - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
   - action: action_fetch_search_product
   - slot_was_set:
     - product_fetch_avaliable: True
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: konfirmasi_sewa
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: [11]
-    - confirm_to_rent: True
+  - intent: menambahkan_keranjang_belanja
+  - action: action_insert_to_cart
   - action: utter_bertanya_kebutuhan_lainnya
+  - checkpoint: user_selesai_menambah_produk_ke_keranjang
+
+- story: User selesai memilih produk dan ingin checkout
+  steps:
+  - checkpoint: user_selesai_menambah_produk_ke_keranjang
+  - intent: melihat_keranjang_belanja
+  - action: action_check_cart
   - slot_was_set:
-    - product_fetch_avaliable: False
-  - intent: menolak
-  - action: action_confirm_search_another_product
+    - id_product_cart: [45, 46]
+  - intent: konfirmasi # konfirmasi mau checkout
+  - action: action_confirm_checkout
   - slot_was_set:
-    - want_to_rent_another_product: False
+    - want_to_checkout: True
   - action: rent_product_form
   - active_loop: rent_product_form
   - active_loop: null
@@ -35,91 +31,43 @@ stories:
     - requested_slot: null
   - action: utter_submit_rent_product
   - action: action_send_email_invoice
+  - action: action_selesai_percakapan
+
+- story: User selesai memilih produk dan ingin checkout
+  steps:
+  - checkpoint: user_selesai_menambah_produk_ke_keranjang
+  - intent: mau_checkout
+  - action: action_checkout
+  - slot_was_set:
+    - id_product_cart: [45, 46]
+    - want_to_checkout: True
+  - action: rent_product_form
+  - active_loop: rent_product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_rent_product
+  - action: action_send_email_invoice
+  - action: action_selesai_percakapan
+
+- story: User tidak ingin checkout
+  steps:
+  - checkpoint: user_selesai_menambah_produk_ke_keranjang
+  - intent: melihat_keranjang_belanja
+  - action: action_check_cart
+  - intent: menolak
+  - action: action_confirm_checkout
+  - slot_was_set:
+    - want_to_checkout: False
+  - action: action_selesai_percakapan
 
 - story: User mencari produk secara random dan produk tidak ditemukan
   steps:
   - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
   - action: action_fetch_search_product
   - slot_was_set:
     - product_fetch_avaliable: False
-  - action: utter_bertanya_kebutuhan_lainnya
-
-- story: User mencari produk secara random dan tidak jadi menyewa
-  steps:
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: menolak
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: null
-    - confirm_to_rent: False
-  - action: action_selesai_percakapan
-
-- story: User mencari produk secara random dan mencari lagi ke 2 kali, tapi gak jadi menyewa alat ke 2
-  steps:
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True # -> ada produk yang tersedia # gimana jika produk tidak tersedia ?
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: konfirmasi_sewa
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: [11]
-    - confirm_to_rent: True
-  - action: utter_bertanya_kebutuhan_lainnya # perlu ada set confirm_to_rent: False
-  - slot_was_set:
-    - product_fetch_avaliable: False
-  - intent: konfirmasi_sewa
-  - action: action_confirm_search_another_product
-  - slot_was_set:
-    - want_to_rent_another_product: True
-  - action: utter_ask_another_product
-  - intent: tanya_produk
-  - action: search_product_form
-  - active_loop: search_product_form
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - slot_was_set:
-    - product_fetch_avaliable: True
-  - intent: menolak
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - id_product_cart: [11]
-    - confirm_to_rent: False
-  - action: rent_product_form
-  - active_loop: rent_product_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit_rent_product
-  - action: action_send_email_invoice
+  - action: utter_produk_tidak_tersedia
 
 # TODO 
 # - sending email invoice to user
@@ -134,7 +82,7 @@ stories:
   # - action: rent_product_form
   # - active_loop: rent_product_form
   # - active_loop: null
-  # - intent: konfirmasi_sewa
+  # - intent: konfirmasi
   # - action: action_confirm_to_rent
   # - action: utter_submit_rent_product
   # - action: action_send_email_invoice
@@ -149,7 +97,7 @@ stories:
 #   - active_loop: null
 #   - action: utter_submit_search_product
 #   - action: action_fetch_search_product
-#   - intent: deny
+#   - intent: menolak
 #   - action: utter_menawarkan_produk_lainnya
 
   # - intent: informasi_user
@@ -179,7 +127,7 @@ stories:
 #     - series: null
 #   - action: action_tanya_produk
 #   - action: utter_menawarkan_untuk_disewa
-#   - intent: deny
+#   - intent: menolak
 #   - action: utter_menawarkan_produk_lainnya # -> menyimpan dalam slot array, produk yang ingin disewa
 
 
@@ -239,65 +187,3 @@ stories:
   # saya bayar dp diawal atau setelah ambil kameranya ?
   # apakah perlu bayar dp dulu ?
   # apakah ada syarat dan ketentuan untuk menyewa kamera ?
-
-- story: interactive_story_1
-  steps:
-  - intent: sapaan_pembuka
-  - action: action_sapaan
-  - intent: tanya_produk
-    entities:
-    - category: kamera
-    - merk: nikon
-    - series: d500
-    - category: kamera
-    - series: d500
-    - merk: nikon
-  - slot_was_set:
-    - merk: nikon
-  - slot_was_set:
-    - category: kamera
-  - slot_was_set:
-    - series: d500
-  - action: search_product_form
-  - active_loop: search_product_form
-  - slot_was_set:
-    - merk: nikon
-  - slot_was_set:
-    - category: kamera
-  - slot_was_set:
-    - series: d500
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_submit_search_product
-  - action: action_fetch_search_product
-  - slot_was_set:
-    - product_fetch_avaliable: true
-  - slot_was_set:
-    - product_fetch:
-      - id_produk: 11
-        nama: Camera Nikon D500
-        merk: Nikon
-        harga: '350'
-        thumbnail: kamera_nikon_d500.jpeg
-        deskripsi: Memenuhi unggulan DX baru, yang D500 Nikon. Sekilas, kelihatannya tidak mengejutkan - tapi terkandung di dalam bodi kamera yang ramping adalah kekuatan besar yang sesungguhnya dari pemrosesan dan kemajuan teknologi. D500 siap untuk pergi ke mana pun gairah Anda menuntun Anda, menangkap segala sesuatu dengan kejelasan, kecepatan dan resolusi yang menakjubkan
-        type_produk: kamera
-        spesifikasi_detail: '{"dimensi": "147 x 115 x 81 mm","weight": "760 gr", "iso": "100 - 6400", "shutter": "30 - 1/8000 seconds", "file_format": "JPEG", "memory_card_type": "SD, SDHC, SDXC"}'
-        status: tersedia
-  - action: utter_product_available
-  - action: utter_menawarkan_untuk_disewa
-  - intent: menolak
-  - action: action_confirm_to_rent
-  - slot_was_set:
-    - confirm_to_rent: false
-  - slot_was_set:
-    - product_fetch: null
-  - slot_was_set:
-    - product_fetch_avaliable: false
-  - slot_was_set:
-    - category: null
-  - slot_was_set:
-    - merk: null
-  - slot_was_set:
-    - series: null
-  - action: action_selesai_percakapan

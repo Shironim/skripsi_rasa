@@ -11,29 +11,38 @@ nlu:
     - Selamat malam
     - halo
     - hi
+
 - intent: testing_saja
   examples: |
     - Test
     - Testing aja
     - coba coba
+
 - intent: tanya_produk
   examples: |
     - Saya mau menyewa [kamera](category) [nikon](merk) [d500](series) ada kak ?
+    - Saya mau menyewa [kamera](category) [Sony](merk) [A6400](series) ada kak ?
+    - Saya mau menyewa [kamera](category) [Sony](merk) [NX100](series) ada kak ?
     - Permisi, ada [kamera](category) apa saja yang tersedia ?
     - apakah ada [kamera](category) ?
-    - [lensa](category) [tele](series) [nikon](merk) ada kak ?
-    - saya cari [kamera](category) [sony](merk) [a600](series) ?
+    - [lensa](category) [tele](series) [nikon](merk) [70 - 300mm](rentang_fokus) ada kak ?
+    - saya cari [kamera](category) [sony](merk) [a6000](series) ?
     - apakah [kamera](category) merk [Sony](merk) ada ?
     - [kamera](category) merk [Nikon](merk) ada ?
     - apakah ada [kamera](category) [Sony](merk) ?
-    - kalau [lensa](category) [fix](series) ada merk apa saja ?
+    - kalau [lensa](category) [fix](series) [50mm](rentang_fokus) ada merk apa saja ?
     - disini ada [lensa](category) [tele](series) merk [Nikon](merk) ?
     - disini ada [Nikon](merk) [d70](series) ?
-    - Saya mau sewa kamera foto ini, apakah tersedia untuk disewa hari ini ?
-    - Saya mau menyewa produk ini, apakah tersedia untuk disewa ?
-    - merk nya [Sony]{"entity": "merk", "value": "sony"} [A600](series) ada gak ?
-    - [Sony]{"entity": "merk", "value": "sony"} [a6000](series)
+    - disini ada [Sony](merk) [A6000](series) ?
+    - saya mau menyewa [kabel](category) [HDMI](series) ?
+    - saya mau menyewa [kabel](category) [XLR](series) ?
+    - saya mau menyewa [Tripod](category) ?
+    - saya mau menyewa [Botol](category) ?
     - saya mau nyewa [kamera](category) [nikon](merk) [d500](series)
+    - saya lagi nyari [lensa](category) [tele](series) [nikon](merk) [70 - 300mm](rentang_fokus)
+    - disini ada [lensa](category) [kit](series) [nikon](merk) [18 - 55mm](rentang_fokus) ?
+    - kalau [lensa](category) [fix](series) [nikon](merk) [50mm](rentang_fokus) ada ?
+
 - intent: syarat_sewa
   examples: |
     - syarat sewa
@@ -42,6 +51,23 @@ nlu:
     - bagaimana teknis sewa nya ?
     - apakah ada yang perlu saya tinggal ?
     - apakah ada syarat sewa ?
+
+- intent: menambahkan_keranjang_belanja 
+  examples: |
+    - saya mau menambah [kamera](category) [nikon](merk) [d500](series) ke keranjang belanja
+    - saya mau menambah [kamera](category) [Sony](merk) [A6400](series) ke keranjang belanja
+    - saya mau memasukan [kamera](category) [Sony](merk) [NX100](series) ke keranjang belanja
+    - saya mau memasukan [lensa](category) [fix](series) [nikon](merk) [50mm](rentang_fokus) ke keranjang belanja
+    - saya mau memasukan [lensa](category) [kit](series) [nikon](merk) [18 - 55mm](rentang_fokus) ke keranjang belanja
+    - saya mau memasukan [kabel](category) [XLR](series) ke keranjang belanja
+
+- intent: melihat_keranjang_belanja
+  examples: |
+    - saya mau melihat isi keranjang belanja saya
+    - lihat keranjang belanja dong
+    - mau liat keranjang belanja nya, ada apa saja
+    - saya mau liat sudah ada apa saja di keranjang belanja saya
+
 - intent: pengembalian_alat
   examples: |
     - pengembaliannya nanti bagaimana ya ?
@@ -51,6 +77,7 @@ nlu:
     - kapan maksimal mengembalikan alat nya ?
     - kalau terlambat mengembalikan bagaimana ?
     - kalau telat ada denda berapa ?
+
 - intent: pembayaran
   examples: |
     - untuk pembayarannya nanti bagaimana ya ?
@@ -60,11 +87,19 @@ nlu:
     - metode pembayarannya yang bisa digunakan apa saja ?
     - apakah perlu DP dulu ?
     - untuk sewa kameranya harus DP dulu berapa ?
+
+- intent: mau_checkout
+  examples: |
+    - Saya ingin melakukan checkout untuk produk ini.
+    - Tolong bantu saya untuk menyelesaikan pembelian.
+    - Bagaimana caranya melakukan checkout ?
+
 - intent: inform_name
   examples: |
     - Tasya
     - Kevin marblo
     - Yura yunita
+
 - intent: inform_email
   examples: |
     - dimasseto@gmail.com
@@ -73,7 +108,8 @@ nlu:
     - dewa19@gmail.com
     - Dimas
     - dimas@gmail.com
-- intent: konfirmasi_sewa
+
+- intent: konfirmasi
   examples: |
     - Iyaa, baik
     - Iyaa, mau
@@ -83,10 +119,13 @@ nlu:
     - Ok
     - Okay
     - Jadi
+    - Jadi, kak
     - Woke
     - okee baik
     - iyaa baik
     - iyaa mau
+    - iyaa kak
+
 - intent: menolak
   examples: |
     - Enggak dulu
@@ -95,14 +134,18 @@ nlu:
     - Belum jadi
     - enggak ada
     - enggak dulu
+
 - intent: inform_date_range
   examples: |
     - dari tanggal [10](number) [maret](bulan) sampai [12](number) [maret](bulan)
     - Saya sewa dari tanggal [9](number) sampai [21](number)
+
 - intent: inform_date
   examples: |
     - dari tanggal [9](number) 
     - dari tanggal [16](number)
+    - sampai [12](number)
+    - sampai tanggal [12](number)
     - [20](number)
     - [24](number)
 
@@ -112,6 +155,14 @@ nlu:
     - kamera
     - Lensa
     - lensa
+    - tripod
+    - kabel
+    - botol
+    - laptop
+    - mouse
+    - gelas
+    - kipas
+
 - lookup: bulan
   examples: |
     - januari
@@ -126,20 +177,60 @@ nlu:
     - oktober
     - november
     - desember
+
 - lookup: series
   examples: |
     - A6000
     - a6000
+    - a6400
+    - D7100
     - D500
     - d500
+    - XLR
+    - HDMI
+    - nx100
+    - nx70
     - D70
     - d70
     - tele
     - fix
     - kit
+    - BK-V900
+    - Dolly 
+    - Lightstand 
+    - A7C II
+    - A7CR
+    - A6700
+    - D3100
+    - D3200
+    - D5300
+    - D5600
+    - D7200
+    - D90
+    - D5000
+    - D500
+
 - lookup: merk
   examples: |
     - Nikon
     - nikon
     - Sony
     - sony
+    - Kingjoy
+    - Takara
+    - Beike
+
+- lookup: rentang_fokus
+  examples: |
+    - 50mm
+    - 18 - 105mm
+    - 85mm
+    - 105mm
+    - 18-55mm
+    - 18mm - 55mm
+    - 18mm-105mm
+    - 18 - 135mm
+    - 24 - 70mm
+    - 24mm - 70mm
+    - 70-300mm
+    - 70mm-300mm
