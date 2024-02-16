@@ -2,25 +2,33 @@ version: '3.1'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+  
 intents:
 - menolak
 - inform_date
 - inform_date_range
 - inform_email
 - inform_name
-- konfirmasi_sewa
+- konfirmasi
 - pembayaran
 - pengembalian_alat
 - sapaan_pembuka
 - syarat_sewa
 - tanya_produk
 - testing_saja
+- menambahkan_keranjang_belanja
+- melihat_keranjang_belanja
+- mau_checkout
+
 entities:
 - series
 - merk
 - category
+- rentang_fokus
 - number
 - bulan
+- json
+
 slots:
   merk:
     type: text
@@ -28,21 +36,36 @@ slots:
     mappings:
     - type: from_entity
       entity: merk
-      intent: tanya_produk
+      intent: 
+      - tanya_produk
+      - menambahkan_keranjang_belanja
   category:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
       entity: category
-      intent: tanya_produk
+      intent: 
+      - tanya_produk
+      - menambahkan_keranjang_belanja
+  rentang_fokus:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: rentang_fokus
+      intent: 
+      - tanya_produk
+      - menambahkan_keranjang_belanja
   series:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
       entity: series
-      intent: tanya_produk
+      intent: 
+      - tanya_produk
+      - menambahkan_keranjang_belanja
   user_name:
     type: text
     influence_conversation: false
@@ -79,7 +102,7 @@ slots:
     influence_conversation: true
     mappings:
     - type: custom
-  want_to_rent_another_product:
+  want_to_checkout:
     type: bool
     influence_conversation: true
     mappings:
@@ -111,104 +134,107 @@ slots:
       intent:
       - inform_date_range
       - inform_date
+
 forms:
-  search_product_form:
-    required_slots:
-    - merk
-    - category
-    - series
   rent_product_form:
     required_slots:
     - user_name
     - user_email
     - pick_date
     - return_date
+
 responses:
-  utter_ask_merk:
-  - text: Boleh diberitahu merk nya apa ?
-  utter_ask_bulan:
-  - text: mau sewa bulan apa kak ?
-  utter_ask_category:
-  - text: Lagi nyari apa kak ?
-  utter_ask_series:
-  - text: Porduk yang dicari {category} nya yang apa kak, boleh disebutkan seri atau jenisnya ?
   utter_ask_user_name:
   - text: Boleh tolong sebutkan atas nama nya siapa kak ?
+
   utter_ask_user_email:
   - text: Kita akan kirimkan invoice langsung ke email kakak, boleh minta diberitahu email yang digunakan ?
+
   utter_ask_pick_date:
   - text: Mau sewa dari tanggal berapa kak ?
+
   utter_ask_return_date:
   - text: Mau sewa sampai tanggal berapa kak ?
-  utter_product_available:
-  - text: Saat ini {category} {merk} {series} tersedia dan dapat disewa kak
-  utter_product_not_available:
-  - text: Saat ini {category} {merk} {series} tidak tersedia kak
+
+  utter_produk_masuk_keranjang_belanja:
+  - text: Siap, produk {category} {merk} {series} sudah masuk ke keranjang belanja
+
   utter_tanya_ulang:
-  - text: Mohon maaf kak, boleh di ulang lagi ?
-  - text: Boleh di ulang lagi kak ?
+  - text: Kami menyewakan Kamera, Lensa, Kabel dan lainnya, bisa disebutkan kebutuhannya ?
+  - text: Mohon maaf kak, boleh di ulang lagi, Kami menyewakan Kamera, Lensa, Kabel dan lainnya, ?
+
   utter_syarat_sewa:
   - text: Untuk syarat sewa nya cukup perlu meninggalkan sementara KTP yaa.
   - text: Persyaratan untuk dapat membawa alat, kami perlu KTP sebagai jaminan ya.
   - text: Kamu perlu meninggalkan KTP sebagai jaminan alat yaa. Terimakasih.
+
   utter_testing_saja:
   - text: ini test
+
   utter_pembayaran:
   - text: Pembayaran dilakukan saat pengambilan alat.
   - text: Pembayaran DP perlu dilakukan minimal 50% saat pengambilan alat ya.
+
   utter_pengembalian_alat:
   - text: Mohon untuk tidak terlambat, alat yang disewa dikembalikan sesuai waktu pengambilan!.
   - text: Maksimal pengembalian alat sesuai dengan kesepakatan pengembalian alat sesuai dengan jam pengambilan!.
+
   utter_sapaan_pagi:
   - text: Selamat Pagi, ada yang bisa kami bantu ?
   - text: Selamat Pagi, perkenalkan saya bot yang dapat membantu anda dalam menyewa alat, ada yang bisa saya bantu ?
+  
   utter_sapaan_siang:
   - text: Selamat Siang, ada yang bisa kami bantu ?
   - text: Selamat Siang, perkenalkan saya bot yang dapat membantu anda dalam menyewa alat, ada yang bisa saya bantu ?
+
   utter_sapaan_sore:
   - text: Selamat Sore, ada yang bisa kami bantu ?
   - text: Selamat Sore, perkenalkan saya bot yang dapat membantu anda dalam menyewa alat, ada yang bisa saya bantu ?
+
   utter_sapaan_malam:
   - text: Selamat Malam, ada yang bisa kami bantu ?
   - text: Selamat Malam, perkenalkan saya bot yang dapat membantu anda dalam menyewa alat, ada yang bisa saya bantu ?
+
   utter_menawarkan_untuk_disewa:
-  - text: Apakah anda mau menyewa alat ini ?
-  utter_ask_information_user:
-  - text: Boleh diberitahu info nya, nama, email dll ?
+  - text: Silakan dipilih kak, alat yang mau disewa, saya bantu simpan ke keranjang belanja
+  - text: Silakan dipilih alatnya kak, akan saya simpan ke keranjang belanja
+
   utter_bertanya_kebutuhan_lainnya:
   - text: Ada lagi yang dibutuhkan kak ?
   - text: Mau mencari produk lainnya ?
+
+  utter_produk_tidak_tersedia:
+  - text: Maaf, produk yang dicari saat ini tidak tersedia
+  - text: Maaf kak, sepertinya produk yang dicari saat ini tidak tersedia
+
   utter_selesai_percakapan:
-  - text: Baik, jika ada yang dibutuhkan bisa hubungi lagi ya
-  utter_please_rephrase:
-  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  - text: Jika ada yang dibutuhkan bisa hubungi lagi ya
+
   utter_default:
   - text: Saya tidak mengerti, boleh di ulang lagi ?
-  utter_submit_search_product:
-  - text: |
-      Okee, saya coba carikan dulu, mohon tunggu sebentar:
+
   utter_submit_rent_product:
   - text: Terimakasih sudah mempercayai kami, untuk invoice akan kami kirimkan ke email yang sudah diberikan, mohon tunggu sebentar ya.
-  utter_ask_another_product:
-  - text: Baik kak, apalagi yang dibutuhkan ?
+
+  utter_keranjang_kosong:
+  - text: Keranjang masih kosong, silakan pilih produk yang ingin disewa
+  - text: Saat ini keranjang masih kosong
+
 actions:
 - action_confirm_to_rent
-- utter_submit_search_product
 - action_fetch_search_product
 - utter_menawarkan_untuk_disewa
 - utter_selesai_percakapan
 - action_sapaan
 - action_selesai_percakapan
-- utter_product_available
-- action_confirm_search_another_product
 - action_send_email_invoice
 - utter_submit_rent_product
 - utter_bertanya_kebutuhan_lainnya
-- utter_ask_another_product
-- action_tanya_produk
 - utter_syarat_sewa
 - utter_pembayaran
 - utter_pengembalian_alat
-- utter_ask_information_user
-- validate_search_product_form
 - validate_rent_product_form
+- action_insert_to_cart
+- action_check_cart
+- action_checkout
+- action_confirm_checkout
