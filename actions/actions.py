@@ -7,7 +7,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.forms import FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 import requests
-import time
+import times
 
 def clean_name(name):
     return "".join([c for c in name if c.isalpha()])
@@ -99,7 +99,7 @@ class ActionFetchSearchProduct(Action):
             "rentang_fokus": rentang_fokus,
         }
         print('action_fetch_search_product: ', search)
-        url = f"http://localhost:3306/search-produk/"
+        url = f"https://skripsi-backend-nine.vercel.app/api/search-produk/"
         response = requests.post(url, json=search)
         jsonResult = response.json()
         dispatcher.utter_message(json_message=jsonResult)
@@ -128,7 +128,7 @@ class ActionInsertToCart(Action):
         }
         print('action_insert_to_cart: ', search)
 
-        url = f"http://localhost:3306/search-produk/"
+        url = f"https://skripsi-backend-nine.vercel.app/api/search-produk/"
         response = requests.post(url, json=search)
         jsonResult = response.json()
         result = jsonResult.get('data')
@@ -154,7 +154,7 @@ class ActionCheckCart(Action):
             "produk": id_product_cart,
         }
 
-        url = f"http://localhost:3306/getSeveralProduct/"
+        url = f"https://skripsi-backend-nine.vercel.app/api/getSeveralProduct/"
         response = requests.post(url, json=search)
         jsonResult = response.json()
         if id_product_cart == None:
@@ -172,8 +172,14 @@ class ActionCheckout(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        dispatcher.utter_message(text="Baik, saya akan bantu untuk melakukan checkout")
-        return [SlotSet('want_to_checkout', True)]
+        produk = tracker.get_slot("id_product_cart")
+
+        if produk == None:
+            dispatcher.utter_message(response="utter_keranjang_kosong")
+            return [SlotSet('want_to_checkout', False)]
+        else:
+            dispatcher.utter_message(text="Baik, saya akan bantu untuk melakukan checkout")
+            return [SlotSet('want_to_checkout', True)]
 
 class ActionEndConversation(Action):
     def name(self) -> Text:
@@ -216,7 +222,7 @@ class ActionSendEmailInvoice(Action):
             "produk": produk
         }
         print('action_send_email_invoice: ', data)
-        url = f"http://localhost:3306/send-invoice"
+        url = f"https://skripsi-backend-nine.vercel.app/api/send-invoice"
         requests.post(url, json=data)
         return [AllSlotsReset()]
 
@@ -228,8 +234,9 @@ class ActionSapaan(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        current_time = time.strftime("%H:%M:%S")
+        
+        now = times.now()
+        current_time = times.format(now, 'Asia/Jakarta', '%H:%M:%S')
         if current_time < "12:00:00":
             dispatcher.utter_message(response="utter_sapaan_pagi")
         elif current_time > "12:00:00" and current_time < "15:00:00":

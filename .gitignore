@@ -1,3 +1,7 @@
+.config
+.keras
+out.log
+story_graph.dot
 .rasa
 models/
 actions/__pycache__/
