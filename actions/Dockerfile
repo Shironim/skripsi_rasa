@@ -1,4 +1,3 @@
-FROM python:3.10.13
 # Extend the official Rasa SDK image
 FROM rasa/rasa-sdk:3.6.1
 

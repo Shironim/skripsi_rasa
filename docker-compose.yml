@@ -2,6 +2,7 @@ version: "3"
 services:
   rasa:
     container_name: "rasa_server"
+    image: shironim/skripsi-rasa-core:1.0
     user: root
     build:
       context: .
@@ -9,8 +10,14 @@ services:
       - "./:/app"
     ports:
       - "5005:5005"
+    depends_on:
+      - action_server
+    networks:
+      - rasa_network
+
   action_server:
     container_name: "action_server"
+    image: shironim/skripsi-rasa-action:1.0
     build:
       context: actions
     volumes:
@@ -18,3 +25,9 @@ services:
       - ./data:/app/data
     ports:
       - 5055:5055
+    networks:
+      - rasa_network
+
+networks:
+  rasa_network:
+    name: rasa_network
