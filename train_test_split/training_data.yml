@@ -1,0 +1,196 @@
+version: "3.1"
+nlu:
+- intent: inform_date_range
+  examples: |
+    - dari tanggal [10](number) [maret](bulan) sampai [12](number) [maret](bulan)
+- intent: testing_saja
+  examples: |
+    - coba coba
+    - Testing aja
+- intent: mau_checkout
+  examples: |
+    - Bagaimana caranya melakukan checkout ?
+    - Tolong bantu saya untuk menyelesaikan pembelian.
+- intent: inform_name
+  examples: |
+    - Yura yunita
+    - Kevin marblo
+- intent: melihat_keranjang_belanja
+  examples: |
+    - saya mau melihat isi keranjang belanja saya
+    - mau liat keranjang belanja nya, ada apa saja
+    - saya mau liat sudah ada apa saja di keranjang belanja saya
+- intent: syarat_sewa
+  examples: |
+    - bagaimana teknis sewa nya ?
+    - syarat sewa
+    - apakah ada yang perlu saya tinggal ?
+    - apakah ada syarat sewa ?
+    - apa perlu memberikan ktp sebagai syarat sewa nya ?
+- intent: menambahkan_keranjang_belanja
+  examples: |
+    - saya mau menambah [kamera](category) [nikon](merk) [d500](series) ke keranjang belanja
+    - saya mau memasukan [lensa](category) [kit](series) [nikon](merk) [18 - 55mm](rentang_fokus) ke keranjang belanja
+    - saya mau memasukan [kamera](category) [Sony](merk) [NX100](series) ke keranjang belanja
+    - saya mau menambah [kamera](category) [Sony](merk) [A6400](series) ke keranjang belanja
+    - saya mau memasukan [kabel](category) [XLR](series) ke keranjang belanja
+- intent: inform_email
+  examples: |
+    - dimasseto@gmail.com
+    - dimas@gmail.com
+    - Dimas
+    - dimasseto@yahoo.com
+    - dewa18@yahoo.com
+- intent: menolak
+  examples: |
+    - Enggak jadi
+    - Tidak
+    - enggak ada
+    - enggak dulu
+    - Belum jadi
+- intent: inform_date
+  examples: |
+    - [20](number)
+    - dari tanggal [16](number)
+    - sampai [12](number)
+    - sampai tanggal [12](number)
+    - [24](number)
+- intent: pengembalian_alat
+  examples: |
+    - kapan maksimal mengembalikan alat nya ?
+    - kapan maksimal dikembalikan barang nya ?
+    - apakah ada denda keterlambatan ?
+    - maksimal dikembalikan kapan ya ?
+    - kalau telat ada denda berapa ?
+    - pengembaliannya nanti bagaimana ya ?
+- intent: pembayaran
+  examples: |
+    - Pembayarannya saya transfer saja apakah bisa ?
+    - Pembayarannya kalau cash saja apakah bisa ?
+    - untuk sewa kameranya harus DP dulu berapa ?
+    - apakah perlu DP dulu ?
+    - untuk pembayarannya nanti bagaimana ya ?
+    - metode pembayarannya yang bisa digunakan apa saja ?
+- intent: sapaan_pembuka
+  examples: |
+    - Selamat siang
+    - Permisi
+    - Selamat Sore
+    - Halo
+    - Selamat malam
+    - hi
+    - Hi
+- intent: konfirmasi
+  examples: |
+    - Okay
+    - Jadi
+    - Jadi, kak
+    - okee baik
+    - Siap
+    - Okee
+    - iyaa kak
+    - Woke
+    - iyaa baik
+    - Baik
+    - Iyaa, baik
+- intent: tanya_produk
+  examples: |
+    - saya cari [kamera](category) [sony](merk) [a6000](series) ?
+    - kalau [lensa](category) [fix](series) [50mm](rentang_fokus) ada merk apa saja ?
+    - kalau [lensa](category) [fix](series) [nikon](merk) [50mm](rentang_fokus) ada ?
+    - saya lagi nyari [lensa](category) [tele](series) [nikon](merk) [70 - 300mm](rentang_fokus)
+    - Permisi, ada [kamera](category) apa saja yang tersedia ?
+    - disini ada [lensa](category) [kit](series) [nikon](merk) [18 - 55mm](rentang_fokus) ?
+    - saya mau nyewa [kamera](category) [nikon](merk) [d500](series)
+    - Saya mau menyewa [kamera](category) [Sony](merk) [A6400](series) ada kak ?
+    - disini ada [Nikon](merk) [d70](series) ?
+    - [kamera](category) merk [Nikon](merk) ada ?
+    - apakah ada [kamera](category) ?
+    - saya mau menyewa [Tripod](category) ?
+    - Saya mau menyewa [kamera](category) [Sony](merk) [NX100](series) ada kak ?
+    - saya mau menyewa [Botol](category) ?
+    - [lensa](category) [tele](series) [nikon](merk) [70 - 300mm](rentang_fokus) ada kak ?
+    - apakah ada [kamera](category) [Sony](merk) ?
+    - apakah [kamera](category) merk [Sony](merk) ada ?
+    - Saya mau menyewa [kamera](category) [nikon](merk) [d500](series) ada kak ?
+- lookup: category
+  examples: |
+    - Kamera
+    - kamera
+    - Lensa
+    - lensa
+    - tripod
+    - kabel
+    - botol
+    - laptop
+    - mouse
+    - gelas
+    - kipas
+- lookup: bulan
+  examples: |
+    - januari
+    - februari
+    - maret
+    - april
+    - mei
+    - juni
+    - juli
+    - agustus
+    - september
+    - oktober
+    - november
+    - desember
+- lookup: series
+  examples: |
+    - A6000
+    - a6000
+    - a6400
+    - D7100
+    - D500
+    - d500
+    - XLR
+    - HDMI
+    - nx100
+    - nx70
+    - D70
+    - d70
+    - tele
+    - fix
+    - kit
+    - BK-V900
+    - Dolly
+    - Lightstand
+    - A7C II
+    - A7CR
+    - A6700
+    - D3100
+    - D3200
+    - D5300
+    - D5600
+    - D7200
+    - D90
+    - D5000
+    - D500
+- lookup: merk
+  examples: |
+    - Nikon
+    - nikon
+    - Sony
+    - sony
+    - Kingjoy
+    - Takara
+    - Beike
+- lookup: rentang_fokus
+  examples: |
+    - 50mm
+    - 18 - 105mm
+    - 85mm
+    - 105mm
+    - 18-55mm
+    - 18mm - 55mm
+    - 18mm-105mm
+    - 18 - 135mm
+    - 24 - 70mm
+    - 24mm - 70mm
+    - 70-300mm
+    - 70mm-300mm

@@ -1,0 +1,56 @@
+{
+  "rentang_fokus": {
+    "precision": 1.0,
+    "recall": 0.2727272727272727,
+    "f1-score": 0.42857142857142855,
+    "support": 11,
+    "confused_with": {}
+  },
+  "number": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "series": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 21,
+    "confused_with": {}
+  },
+  "merk": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 20,
+    "confused_with": {}
+  },
+  "category": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 26,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 1.0,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.9090909090909091,
+    "support": 84
+  },
+  "macro avg": {
+    "precision": 0.8,
+    "recall": 0.6545454545454545,
+    "f1-score": 0.6857142857142857,
+    "support": 84
+  },
+  "weighted avg": {
+    "precision": 0.9285714285714286,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.8537414965986395,
+    "support": 84
+  },
+  "accuracy": 0.9595375722543352
+}

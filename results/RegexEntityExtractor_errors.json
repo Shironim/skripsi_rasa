@@ -1,0 +1,538 @@
+[
+  {
+    "text": "disini ada lensa kit nikon 18 - 55mm ?",
+    "entities": [
+      {
+        "start": 11,
+        "end": 16,
+        "value": "lensa",
+        "entity": "category"
+      },
+      {
+        "start": 17,
+        "end": 20,
+        "value": "kit",
+        "entity": "series"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "value": "nikon",
+        "entity": "merk"
+      },
+      {
+        "start": 27,
+        "end": 36,
+        "value": "18 - 55mm",
+        "entity": "rentang_fokus"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 11,
+        "end": 16,
+        "confidence_entity": 0.999709963798523,
+        "value": "lensa",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "series",
+        "start": 17,
+        "end": 20,
+        "confidence_entity": 0.9985932111740112,
+        "value": "kit",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "merk",
+        "start": 21,
+        "end": 26,
+        "confidence_entity": 0.999544084072113,
+        "value": "nikon",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 27,
+        "end": 29,
+        "confidence_entity": 0.9808900952339172,
+        "value": "18",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 32,
+        "end": 36,
+        "confidence_entity": 0.99580979347229,
+        "value": "55mm",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 11,
+        "end": 16,
+        "value": "lensa",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "series",
+        "start": 17,
+        "end": 20,
+        "value": "kit",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "merk",
+        "start": 21,
+        "end": 26,
+        "value": "nikon",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "dari tanggal 9",
+    "entities": [
+      {
+        "start": 13,
+        "end": 14,
+        "value": "9",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 13,
+        "end": 14,
+        "confidence_entity": 0.9428633451461792,
+        "value": "9",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "sampai tanggal 12",
+    "entities": [
+      {
+        "start": 15,
+        "end": 17,
+        "value": "12",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 15,
+        "end": 17,
+        "confidence_entity": 0.9237188696861267,
+        "value": "12",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "lensa tele nikon 70 - 300mm ada kak ?",
+    "entities": [
+      {
+        "start": 0,
+        "end": 5,
+        "value": "lensa",
+        "entity": "category"
+      },
+      {
+        "start": 6,
+        "end": 10,
+        "value": "tele",
+        "entity": "series"
+      },
+      {
+        "start": 11,
+        "end": 16,
+        "value": "nikon",
+        "entity": "merk"
+      },
+      {
+        "start": 17,
+        "end": 27,
+        "value": "70 - 300mm",
+        "entity": "rentang_fokus"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 0,
+        "end": 5,
+        "confidence_entity": 0.9992854595184326,
+        "value": "lensa",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "series",
+        "start": 6,
+        "end": 10,
+        "confidence_entity": 0.9983705282211304,
+        "value": "tele",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "merk",
+        "start": 11,
+        "end": 16,
+        "confidence_entity": 0.9990187287330627,
+        "value": "nikon",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 17,
+        "end": 19,
+        "confidence_entity": 0.517112135887146,
+        "value": "70",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 22,
+        "end": 27,
+        "confidence_entity": 0.8187022805213928,
+        "value": "300mm",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 0,
+        "end": 5,
+        "value": "lensa",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "series",
+        "start": 6,
+        "end": 10,
+        "value": "tele",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "merk",
+        "start": 11,
+        "end": 16,
+        "value": "nikon",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "saya lagi nyari lensa tele nikon 70 - 300mm",
+    "entities": [
+      {
+        "start": 16,
+        "end": 21,
+        "value": "lensa",
+        "entity": "category"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "value": "tele",
+        "entity": "series"
+      },
+      {
+        "start": 27,
+        "end": 32,
+        "value": "nikon",
+        "entity": "merk"
+      },
+      {
+        "start": 33,
+        "end": 43,
+        "value": "70 - 300mm",
+        "entity": "rentang_fokus"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 16,
+        "end": 21,
+        "confidence_entity": 0.999463677406311,
+        "value": "lensa",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "series",
+        "start": 22,
+        "end": 26,
+        "confidence_entity": 0.9986953735351562,
+        "value": "tele",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "merk",
+        "start": 27,
+        "end": 32,
+        "confidence_entity": 0.9989252686500549,
+        "value": "nikon",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 33,
+        "end": 35,
+        "confidence_entity": 0.5882819890975952,
+        "value": "70",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 38,
+        "end": 43,
+        "confidence_entity": 0.821495771408081,
+        "value": "300mm",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 16,
+        "end": 21,
+        "value": "lensa",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "series",
+        "start": 22,
+        "end": 26,
+        "value": "tele",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "merk",
+        "start": 27,
+        "end": 32,
+        "value": "nikon",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "24",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "24",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.9271297454833984,
+        "value": "24",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "saya mau memasukan lensa kit nikon 18 - 55mm ke keranjang belanja",
+    "entities": [
+      {
+        "start": 19,
+        "end": 24,
+        "value": "lensa",
+        "entity": "category"
+      },
+      {
+        "start": 25,
+        "end": 28,
+        "value": "kit",
+        "entity": "series"
+      },
+      {
+        "start": 29,
+        "end": 34,
+        "value": "nikon",
+        "entity": "merk"
+      },
+      {
+        "start": 35,
+        "end": 44,
+        "value": "18 - 55mm",
+        "entity": "rentang_fokus"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 19,
+        "end": 24,
+        "confidence_entity": 0.9993632435798645,
+        "value": "lensa",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "series",
+        "start": 25,
+        "end": 28,
+        "confidence_entity": 0.9990624785423279,
+        "value": "kit",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "merk",
+        "start": 29,
+        "end": 34,
+        "confidence_entity": 0.9994596242904663,
+        "value": "nikon",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 35,
+        "end": 37,
+        "confidence_entity": 0.8580654859542847,
+        "value": "18",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "rentang_fokus",
+        "start": 40,
+        "end": 44,
+        "confidence_entity": 0.988162100315094,
+        "value": "55mm",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "category",
+        "start": 19,
+        "end": 24,
+        "value": "lensa",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "series",
+        "start": 25,
+        "end": 28,
+        "value": "kit",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "merk",
+        "start": 29,
+        "end": 34,
+        "value": "nikon",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "dari tanggal 16",
+    "entities": [
+      {
+        "start": 13,
+        "end": 15,
+        "value": "16",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 13,
+        "end": 15,
+        "confidence_entity": 0.9222155213356018,
+        "value": "16",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "sampai 12",
+    "entities": [
+      {
+        "start": 7,
+        "end": 9,
+        "value": "12",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 7,
+        "end": 9,
+        "confidence_entity": 0.9365984201431274,
+        "value": "12",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
+    "text": "20",
+    "entities": [
+      {
+        "start": 0,
+        "end": 2,
+        "value": "20",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 0,
+        "end": 2,
+        "confidence_entity": 0.9800628423690796,
+        "value": "20",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

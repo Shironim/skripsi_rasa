@@ -1,0 +1,66 @@
+[
+  {
+    "text": "apakah ada yang perlu saya tinggal ?",
+    "intent": "syarat_sewa",
+    "intent_prediction": {
+      "name": "pembayaran",
+      "confidence": 0.8831651210784912
+    }
+  },
+  {
+    "text": "Siap",
+    "intent": "konfirmasi",
+    "intent_prediction": {
+      "name": "sapaan_pembuka",
+      "confidence": 0.7360602617263794
+    }
+  },
+  {
+    "text": "bagaimana teknis sewa nya ?",
+    "intent": "syarat_sewa",
+    "intent_prediction": {
+      "name": "pengembalian_alat",
+      "confidence": 0.48661184310913086
+    }
+  },
+  {
+    "text": "Tidak",
+    "intent": "menolak",
+    "intent_prediction": {
+      "name": "konfirmasi",
+      "confidence": 0.9603588581085205
+    }
+  },
+  {
+    "text": "pengembaliannya nanti bagaimana ya ?",
+    "intent": "pengembalian_alat",
+    "intent_prediction": {
+      "name": "pembayaran",
+      "confidence": 0.9322339296340942
+    }
+  },
+  {
+    "text": "Belum jadi",
+    "intent": "menolak",
+    "intent_prediction": {
+      "name": "konfirmasi",
+      "confidence": 0.9247881174087524
+    }
+  },
+  {
+    "text": "Permisi",
+    "intent": "sapaan_pembuka",
+    "intent_prediction": {
+      "name": "tanya_produk",
+      "confidence": 0.9991182684898376
+    }
+  },
+  {
+    "text": "apakah perlu DP dulu ?",
+    "intent": "pembayaran",
+    "intent_prediction": {
+      "name": "syarat_sewa",
+      "confidence": 0.8657501935958862
+    }
+  }
+]

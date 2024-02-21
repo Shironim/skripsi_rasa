@@ -1,0 +1,144 @@
+[
+  {
+    "text": "saya mau menyewa Tripod ?",
+    "entities": [
+      {
+        "start": 17,
+        "end": 23,
+        "value": "Tripod",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 17,
+        "end": 23,
+        "value": "Tripod",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "saya mau menyewa kabel HDMI ?",
+    "entities": [
+      {
+        "start": 17,
+        "end": 22,
+        "value": "kabel",
+        "entity": "category"
+      },
+      {
+        "start": 23,
+        "end": 27,
+        "value": "HDMI",
+        "entity": "series"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 17,
+        "end": 22,
+        "confidence_entity": 0.9988962411880493,
+        "value": "kabel",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "category",
+        "start": 17,
+        "end": 22,
+        "value": "kabel",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "series",
+        "start": 23,
+        "end": 27,
+        "value": "HDMI",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "saya mau menyewa Botol ?",
+    "entities": [
+      {
+        "start": 17,
+        "end": 22,
+        "value": "Botol",
+        "entity": "category"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 17,
+        "end": 22,
+        "value": "Botol",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "untuk sewa kameranya harus DP dulu berapa ?",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "category",
+        "start": 11,
+        "end": 20,
+        "confidence_entity": 0.9007149338722229,
+        "value": "kameranya",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "disini ada Nikon d70 ?",
+    "entities": [
+      {
+        "start": 11,
+        "end": 16,
+        "value": "Nikon",
+        "entity": "merk"
+      },
+      {
+        "start": 17,
+        "end": 20,
+        "value": "d70",
+        "entity": "series"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "merk",
+        "start": 11,
+        "end": 16,
+        "confidence_entity": 0.9992303848266602,
+        "value": "nikon",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "series",
+        "start": 17,
+        "end": 20,
+        "value": "d70",
+        "extractor": "RegexEntityExtractor"
+      },
+      {
+        "entity": "merk",
+        "start": 11,
+        "end": 16,
+        "value": "Nikon",
+        "extractor": "RegexEntityExtractor"
+      }
+    ]
+  }
+]

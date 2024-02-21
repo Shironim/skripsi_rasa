@@ -1,0 +1,134 @@
+version: "3.1"
+nlu:
+- intent: inform_date_range
+  examples: |
+    - Saya sewa dari tanggal [9](number) sampai [21](number)
+- intent: testing_saja
+  examples: |
+    - Test
+- intent: mau_checkout
+  examples: |
+    - Saya ingin melakukan checkout untuk produk ini.
+- intent: inform_name
+  examples: |
+    - Tasya
+- intent: melihat_keranjang_belanja
+  examples: |
+    - lihat keranjang belanja dong
+- intent: syarat_sewa
+  examples: |
+    - apa ada ketentuan sewa ?
+- intent: menambahkan_keranjang_belanja
+  examples: |
+    - saya mau memasukan [lensa](category) [fix](series) [nikon](merk) [50mm](rentang_fokus) ke keranjang belanja
+- intent: inform_email
+  examples: |
+    - dewa19@gmail.com
+- intent: menolak
+  examples: |
+    - Enggak dulu
+- intent: inform_date
+  examples: |
+    - dari tanggal [9](number)
+- intent: pengembalian_alat
+  examples: |
+    - kalau terlambat mengembalikan bagaimana ?
+- intent: pembayaran
+  examples: |
+    - pembayarannya apakah bisa transfer atau cash ?
+- intent: sapaan_pembuka
+  examples: |
+    - Selamat pagi
+    - halo
+- intent: konfirmasi
+  examples: |
+    - iyaa mau
+    - Iyaa, mau
+    - Ok
+- intent: tanya_produk
+  examples: |
+    - saya mau menyewa [kabel](category) [XLR](series) ?
+    - disini ada [Sony](merk) [A6000](series) ?
+    - saya mau menyewa [kabel](category) [HDMI](series) ?
+    - disini ada [lensa](category) [tele](series) merk [Nikon](merk) ?
+- lookup: category
+  examples: |
+    - Kamera
+    - kamera
+    - Lensa
+    - lensa
+    - tripod
+    - kabel
+    - botol
+    - laptop
+    - mouse
+    - gelas
+    - kipas
+- lookup: bulan
+  examples: |
+    - januari
+    - februari
+    - maret
+    - april
+    - mei
+    - juni
+    - juli
+    - agustus
+    - september
+    - oktober
+    - november
+    - desember
+- lookup: series
+  examples: |
+    - A6000
+    - a6000
+    - a6400
+    - D7100
+    - D500
+    - d500
+    - XLR
+    - HDMI
+    - nx100
+    - nx70
+    - D70
+    - d70
+    - tele
+    - fix
+    - kit
+    - BK-V900
+    - Dolly
+    - Lightstand
+    - A7C II
+    - A7CR
+    - A6700
+    - D3100
+    - D3200
+    - D5300
+    - D5600
+    - D7200
+    - D90
+    - D5000
+    - D500
+- lookup: merk
+  examples: |
+    - Nikon
+    - nikon
+    - Sony
+    - sony
+    - Kingjoy
+    - Takara
+    - Beike
+- lookup: rentang_fokus
+  examples: |
+    - 50mm
+    - 18 - 105mm
+    - 85mm
+    - 105mm
+    - 18-55mm
+    - 18mm - 55mm
+    - 18mm-105mm
+    - 18 - 135mm
+    - 24 - 70mm
+    - 24mm - 70mm
+    - 70-300mm
+    - 70mm-300mm
